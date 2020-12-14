@@ -61,5 +61,33 @@ namespace ValueObjects.Tests
                 .Should()
                 .BeTrue();
         }
+
+        [Fact]
+        public void Should_BeEqual()
+        {
+            var timeSlot = new TimeSlot(
+                new TimeSpan(10, 15, 0),
+                new TimeSpan(10, 30, 0));
+
+            var timeSlot2 = new TimeSlot(
+                new TimeSpan(10, 15, 0),
+                new TimeSpan(10, 30, 0));
+
+            timeSlot.Equals(timeSlot2).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Should_NotBeEqual()
+        {
+            var timeSlot = new TimeSlot(
+                new TimeSpan(10, 15, 0),
+                new TimeSpan(10, 30, 0));
+
+            var timeSlot2 = new TimeSlot(
+                new TimeSpan(10, 15, 0),
+                new TimeSpan(10, 31, 0));
+
+            timeSlot.Equals(timeSlot2).Should().BeFalse();
+        }
     }
 }
